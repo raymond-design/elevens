@@ -7,7 +7,7 @@ public class Shuffler {
 	 * The number of consecutive shuffle steps to be performed in each call
 	 * to each sorting procedure.
 	 */
-	private static final int SHUFFLE_COUNT = 1;
+	private static final int SHUFFLE_COUNT = 4;
 
 
 	/**
@@ -15,9 +15,10 @@ public class Shuffler {
 	 * @param args is not used.
 	 */
 	public static void main(String[] args) {
+	    System.out.println("try");
 		System.out.println("Results of " + SHUFFLE_COUNT +
 								 " consecutive perfect shuffles:");
-		int[] values1 = {0, 1, 2, 3};
+		int[] values1 = {0, 1, 2, 3, 4, 5, 6, 7};
 		for (int j = 1; j <= SHUFFLE_COUNT; j++) {
 			perfectShuffle(values1);
 			System.out.print("  " + j + ":");
@@ -30,7 +31,7 @@ public class Shuffler {
 
 		System.out.println("Results of " + SHUFFLE_COUNT +
 								 " consecutive efficient selection shuffles:");
-		int[] values2 = {0, 1, 2, 3};
+		int[] values2 = {0, 1, 2, 3, 4, 5, 6, 7};
 		for (int j = 1; j <= SHUFFLE_COUNT; j++) {
 			selectionShuffle(values2);
 			System.out.print("  " + j + ":");
@@ -51,6 +52,20 @@ public class Shuffler {
 	 */
 	public static void perfectShuffle(int[] values) {
 		/* *** TO BE IMPLEMENTED IN ACTIVITY 3 *** */
+		int[] shuffled = new int [values.length];
+		int first = 0;
+		int second = values.length / 2;
+		for(int i = 0; i < values.length; i+=2)
+		{
+		    shuffled[i] = values[first];
+		    shuffled[i+1] = values[second];
+		    first++;
+		    second++;
+		}
+		for (int j= 0; j< values.length; j++)
+		{
+		    values[j]=shuffled[j];
+		  }
 	}
 
 	/**
@@ -66,5 +81,13 @@ public class Shuffler {
 	 */
 	public static void selectionShuffle(int[] values) {
 		/* *** TO BE IMPLEMENTED IN ACTIVITY 3 *** */
+		for(int i =values.length-1; i> 0; i--)
+		{
+		    int position = (int)(Math.random() * i);
+		    int num = values[position];
+		    values[num] = i;
+		    values[i] = values[position];
+		    
+		  }
 	}
 }
