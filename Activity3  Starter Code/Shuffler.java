@@ -85,9 +85,8 @@ public class Shuffler {
 		{
 		    int position = (int)(Math.random() * i);
 		    int num = values[position];
-		    values[num] = i;
 		    values[i] = values[position];
-		    
+		    values[num] = i;
 		  }
 	}
 }
