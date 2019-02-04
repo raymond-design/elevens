@@ -54,7 +54,15 @@ public class ElevensBoard extends Board {
 	@Override
 	public boolean isLegal(List<Integer> selectedCards) {
 		/* *** TO BE IMPLEMENTED IN ACTIVITY 9 *** */
-	}
+		if (selectedCards.size() == 2) {
+			return containsPairSum11(selectedCards);
+		} else if (selectedCards.size() == 3) {
+			return containsJQK(selectedCards);
+		} else {
+			return false;
+}
+}
+	
 
 	/**
 	 * Determine if there are any legal plays left on the board.
@@ -67,6 +75,8 @@ public class ElevensBoard extends Board {
 	@Override
 	public boolean anotherPlayIsPossible() {
 		/* *** TO BE IMPLEMENTED IN ACTIVITY 9 *** */
+		List<Integer> cIndexes = cardIndexes();
+		return containsPairSum11(cIndexes) || containsJQK(cIndexes);
 	}
 
 	/**
